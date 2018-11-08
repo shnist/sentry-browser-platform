@@ -1,8 +1,7 @@
 {
   "name": "sentry-test",
-  "type": "angular",
   "integrations": {
     "cordova": {}
   },
-  "app_id": ""
+  "type": "angular"
 }

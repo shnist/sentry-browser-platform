@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -9,6 +9,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SentryIonicErrorHandler } from './sentry-ionic-error-handler';
 
 @NgModule({
   imports: [
@@ -19,7 +20,12 @@ import { AppComponent } from './app.component';
     IonicStorageModule.forRoot()
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar],
+  providers: [
+    InAppBrowser,
+    SplashScreen,
+    StatusBar,
+    { provide: ErrorHandler, useClass: SentryIonicErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

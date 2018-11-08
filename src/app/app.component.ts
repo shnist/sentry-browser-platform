@@ -6,6 +6,8 @@ import { Events, MenuController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
+import * as Sentry from 'sentry-cordova';
+
 
 @Component({
   selector: 'app-root',
@@ -52,6 +54,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    Sentry.init({ dsn: 'https://8edc39eccd79407883c8d8427a234b7e@sentry.io/217526' });
     this.checkLoginStatus();
     this.listenForLoginEvents();
   }
